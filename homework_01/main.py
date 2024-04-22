@@ -1,3 +1,7 @@
+#Домашнее задание №1
+#Функции и структуры данных
+
+#1
 def power_numbers(*numbers):
     result = []
     for num in numbers:
@@ -6,7 +10,7 @@ def power_numbers(*numbers):
 
 
 
-
+#2
 import math
 
 ODD = "odd"
@@ -25,7 +29,7 @@ def is_prime(num):
 
 def filter_numbers(numbers, flt):
     if flt == ODD:  # or flt == "odd":
-        return [num for num in numbers if num % 2 != 0]
+        return [num for num in numbers if num $ 2 != 0]
     elif flt == EVEN:  #or flt == "even":
         return [num for num in numbers if num % 2 == 0]
     elif flt == PRIME:  # or flt == "prime":
