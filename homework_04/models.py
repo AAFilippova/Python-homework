@@ -30,7 +30,7 @@ from sqlalchemy.orm import (
 
 PG_CONN_URI = environ.get(
     'SQLALCHEMY_PG_CONN_URI'
-) or "postgresql+asyncpg://postgres:password@localhost:5432/postgres"
+) or "postgresql+asyncpg://user:password@localhost:5432/postgres"
 DB_ECHO = getenv("DB_ECHO", True)
 
 engine = create_async_engine(
@@ -57,20 +57,8 @@ class User(Base):
     email: Mapped[str | None] = mapped_column(unique=True)
     name: Mapped[str] = mapped_column(default="", server_default="")
 
-    posts: Mapped[list["Post"]] = relationship(back_populates="author")
+    posts: Mapped[list["Post"]] = relationship(back_populates="user")
 
-    def __repr__(self):
-        return str(self)
-
-    def __str__(self):
-        return (
-            f"{self.__class__.__name__}("
-            f"id={self.id}, "
-            f"username={self.username!r}, "
-            f"email={self.email!r},"
-            f"name={self.name!r}"
-            ")"
-        )
 
 
 class Post(Base):
@@ -78,17 +66,5 @@ class Post(Base):
     body: Mapped[str] = mapped_column(String)
     user_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
 
-    author: Mapped["User"] = relationship(back_populates="posts")
+    user: Mapped["User"] = relationship(back_populates="posts")
 
-    def __repr__(self):
-        return str(self)
-
-    def __str__(self):
-        return (
-            f"{self.__class__.__name__}("
-            f"id={self.id}, "
-            f"title={self.title!r}, "
-            f"title={self.body!r}, "
-            f"user_id={self.user_id!r}"
-            ")"
-        )
