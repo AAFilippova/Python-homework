@@ -7,10 +7,7 @@
 для модели Post обязательными являются user_id, title, body
 создайте связи relationship между моделями: User.posts и Post.user
 """
-from os import (
-    getenv,
-    environ,
-)
+from os import getenv , environ
 from sqlalchemy import MetaData
 from sqlalchemy import (
     String,
@@ -38,7 +35,7 @@ engine = create_async_engine(
     echo=DB_ECHO,
 )
 
-async_session = async_sessionmaker(
+Session = async_sessionmaker(
     bind=engine,
     expire_on_commit=False,
     autocommit=False,
@@ -67,4 +64,3 @@ class Post(Base):
     user_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
 
     user: Mapped["User"] = relationship(back_populates="posts")
-

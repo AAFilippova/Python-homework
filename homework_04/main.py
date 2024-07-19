@@ -22,7 +22,7 @@ from jsonplaceholder_requests import (
 )
 from models import (
     engine,
-    async_session,
+    Session,
     Base,
     User,
     Post,
@@ -36,7 +36,7 @@ async def create_tables():
 
 
 async def add_user_from_site(users_data):
-    async with async_session() as session:
+    async with Session() as session:
         async with session.begin():
             for user in users_data:
                 username = user['username']
@@ -48,7 +48,7 @@ async def add_user_from_site(users_data):
 
 
 async def add_post_from_site(posts_data):
-    async with async_session() as session:
+    async with Session() as session:
         async with session.begin():
             for post in posts_data:
                 title = post['title']
