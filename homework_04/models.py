@@ -38,7 +38,7 @@ engine = create_async_engine(
     echo=DB_ECHO,
 )
 
-session = async_sessionmaker(
+async_session = async_sessionmaker(
     bind=engine,
     expire_on_commit=False,
     autocommit=False,
