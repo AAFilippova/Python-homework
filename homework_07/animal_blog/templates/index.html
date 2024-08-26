@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Index page
+{% endblock %}
+
+{% block body %}
+	<h1>Welcome to the wonderful world of pets!</h1>
+
+  <h2>Apps:</h2>
+
+  <p>
+    <a href="{% url 'animalblog_app:articles_index' %}">Articles list</a>
+  </p>
+  <p>
+    <a href="{% url 'animalblog_app:authors_index' %}">Authors list</a>
+  </p>
+{% endblock %}
