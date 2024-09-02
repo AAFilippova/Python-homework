@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Index page
+{% endblock %}
+
+{% block body %}
+	<h1>Welcome to the wonderful world of pets!</h1>
+
+  <h3>Blog:</h3>
+
+  <p>
+    <a href="{% url 'animalblog_app:create_article' %}">Create Article</a>
+  </p>
+  <p>
+    <a href="{% url 'animalblog_app:list_article' %}">Articles list</a>
+  </p>
+  <p>
+    <a href="{% url 'animalblog_app:authors_index' %}">Authors list</a>
+  </p>
+  <p>
+    <a href="{% url 'animalblog_app:list_category' %}">Category List</a>
+  </p>
+
+  <h3>Shop:</h3>
+
+  <p>
+    <a href="{% url 'pet_products:products_index' %}">Products list</a>
+  </p>
+  <p>
+    <a href="{% url 'pet_products:orders_index' %}">Orders list</a>
+  </p>
+   <p>
+    <a href="{% url 'pet_products:list_product_category' %}">Product Category List</a>
+  </p>
+
+{% endblock %}
